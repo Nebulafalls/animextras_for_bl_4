@@ -16,7 +16,7 @@ from mathutils import Vector, Matrix
 # Data (stroring it in the object or scene doesnt work well) #
 # ########################################################## #
 
-shader = gpu.shader.from_builtin('3D_UNIFORM_COLOR')
+shader = gpu.shader.from_builtin('UNIFORM_COLOR')
 frame_data = dict([])
 batches = dict([])
 extern_data = dict([])
@@ -545,16 +545,16 @@ class ANMX_draw_meshes(Operator):
                 shader.uniform_float("color", color)
                 
                 # Theres gotta be a better way to do this. Seems super inefficient
-                if not ac.use_flat:
-                    bgl.glEnable(bgl.GL_BLEND)
-                    bgl.glEnable(bgl.GL_CULL_FACE)
-                if not ac.use_xray:
-                    bgl.glEnable(bgl.GL_DEPTH_TEST)
+                #if not ac.use_flat:
+                #    bgl.glEnable(bgl.GL_BLEND)
+                #    bgl.glEnable(bgl.GL_CULL_FACE)
+                #if not ac.use_xray:
+                #    bgl.glEnable(bgl.GL_DEPTH_TEST)
                 
                 batches[key].draw(shader)
                 
-                bgl.glDisable(bgl.GL_BLEND)
-                bgl.glDisable(bgl.GL_CULL_FACE)
-                bgl.glDisable(bgl.GL_DEPTH_TEST)
+                #bgl.glDisable(bgl.GL_BLEND)
+                #bgl.glDisable(bgl.GL_CULL_FACE)
+                #bgl.glDisable(bgl.GL_DEPTH_TEST)
             
             override = False
